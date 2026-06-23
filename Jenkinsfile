@@ -6,6 +6,12 @@ pipeline {
                 checkout scm
             }
         }
+	stage('Debug PATH') {
+    	    steps {
+        	bat 'echo %PATH%'
+        	bat 'where python || echo Python not in PATH'
+    	    }
+	}
         stage('Setup Python') {
             steps {
                 bat 'python --version'
